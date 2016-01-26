@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master_config.vm.synced_folder "saltstack/salt/", "/srv/salt"
 
     master_config.vm.provision :salt do |salt|
-      salt.master_config = "saltstack/etc/master"
+      salt.master_config = "saltstack/etc/master_of_master"
       salt.master_key = "saltstack/keys/master_minion.pem"
       salt.master_pub = "saltstack/keys/master_minion.pub"
       salt.seed_master = {
@@ -35,7 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master_config.vm.synced_folder "saltstack/salt/", "/srv/salt"
 
     master_config.vm.provision :salt do |salt|
-      salt.master_config = "saltstack/etc/master"
+      salt.master_config = "saltstack/etc/master_syndic"
       salt.master_key = "saltstack/keys/master_minion.pem"
       salt.master_pub = "saltstack/keys/master_minion.pub"
       salt.seed_master = {
@@ -44,7 +44,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                          }
       salt.install_master = true
       salt.no_minion = true
-      salt.install_type = "-g https://github.com/jfindlay/salt.git -P -M git v2015.8.4"
+      salt.install_type = "-g https://github.com/jfindlay/salt.git -P -S -M git v2015.8.4"
       salt.always_install = true
       salt.verbose = true
     end
