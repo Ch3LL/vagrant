@@ -38,6 +38,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       salt.install_type = "-P -M git v2015.8.8"
       salt.always_install = true
       salt.verbose = true
+      salt.run_highstate = true
 
     end
   end
