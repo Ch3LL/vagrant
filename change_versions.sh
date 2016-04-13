@@ -13,7 +13,7 @@ usage ()
 
 change_salt_version ()
 {
-	sed -i 's/.*salt.install_args.*/      salt.install_args = "'${version}'"/' ${file}
+	sed -i 's/201*.*/'${version}'"/' ${file}
 }
 
 change_os ()
